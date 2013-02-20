@@ -14,7 +14,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
     }
     else
     {
-        $shafilename = sha1_file($_FILES["file"]["tmp_name"])."." . $extension;
+        $shafilename = sha1_file($_FILES["file"]["name"])."." . $extension;
 	$path = "/Users/miguelbaquero/files/";
 	$imagename = $_FILES["file"]["name"];
         echo "Upload: " . $_FILES["file"]["name"] . "<br>";
