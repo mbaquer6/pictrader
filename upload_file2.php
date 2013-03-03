@@ -1,5 +1,5 @@
 <?php
-$allowedExts = array("jpg", "jpeg", "gif", "png");
+$allowedExts = array("jpg", "jpeg", "gif", "png", "JPG","JPEG", "GIF" );
 $extension = end(explode(".", $_FILES["file"]["name"]));
 if ((($_FILES["file"]["type"] == "image/gif")
 || ($_FILES["file"]["type"] == "image/jpeg")
@@ -15,28 +15,34 @@ if ((($_FILES["file"]["type"] == "image/gif")
     else
     {
         $shafilename = sha1_file($_FILES["file"]["tmp_name"])."." . $extension;
-	$path = "/Users/miguelbaquero/files/";
+	$path = "../pics/";
 	$imagename = $_FILES["file"]["name"];
         echo "Upload: " . $_FILES["file"]["name"] . "<br>";
         echo "Type: " . $_FILES["file"]["type"] . "<br>";
         echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
         echo "Temp file: " . $shafilename . "<br>";
 
-        if (file_exists("/Users/miguelbaquero/files/" .$shafilename))
+        if (file_exists("../pics/" .$shafilename))
         {
             echo $shafilename. " already exists. ";
         }
         else
         {
-            if($conexion = mysql_connect('192.168.2.61', 'admin', '12345678'))
-            {
-                mysql_select_db('pictrader',$conexion);
+                include 'connect.php';
+                mysql_select_db('pictrader',$connection);
                 $sql = "INSERT INTO tbl_ImageList (ID, UserID, ImageName, Date,FS_location)
                 VALUES (NULL, 2, '".$imagename."',CURRENT_TIMESTAMP,'".$path.$shafilename."');";
                 mysql_query($sql);
+                mysql_close($connection);
                 move_uploaded_file($_FILES["file"]["tmp_name"], $path .$shafilename);
-                echo "Stored in: " . "/Users/miguelbaquero/files/" .$shafilename;
-            }
+                echo "Stored in: " . "../pics/" .$shafilename;
+        }
+    }
+}
+else
+{
+    echo "Invalid file";
+}      }
       
             else
             {
