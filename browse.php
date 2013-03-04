@@ -1,18 +1,12 @@
-<?php
-session_start();
-$user=$_SESSION['User'];
-if(!isset($_SESSION['User'])) // if there is no valid session
-{
-    header("Location: loginform.html");
-}
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en-us">
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Index</title>
-<style type="text/css">
+	<meta charset="utf-8">
+	<title>Image Gallery</title>
+        <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
+        <style type="text/css">
 <!--
 body {
 	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
@@ -123,39 +117,93 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background
 	line-height: 0px;
 }
 -->
-</style></head>
+</style>
 
+  <link href='http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+</head>
 <body>
-<div class="container">
+    <div class="container">
   <div class="sidebar1">
     <ul class="nav">
-      <li><a href="#" target="new">Upload pics</a></li>
-      <li><a href="browse.php">Pic browser</a></li>
+      <li><a href="#">Link one</a></li>
+      <li><a href="#">Link two</a></li>
       <li><a href="#">Link three</a></li>
       <li><a href="#">Link four</a></li>
     </ul>
-    <p>  Use this as a starting point and modify the properties to produce your own unique look. If you require flyout menus, create your own using a Spry menu, a menu widget from Adobe's Exchange or a variety of other javascript or CSS solutions.</p>
+    <p> The above links demonstrate a basic navigational structure using an unordered list styled with CSS. Use this as a starting point and modify the properties to produce your own unique look. If you require flyout menus, create your own using a Spry menu, a menu widget from Adobe's Exchange or a variety of other javascript or CSS solutions.</p>
     <p>If you would like the navigation along the top, simply move the ul.nav to the top of the page and recreate the styling.</p>
-  <!-- end .sidebar1 --></div>
-  <div class="content">
-    <h1>Welcome
-    <?php
-    echo "$user"."!!!" ;
-    ?>
-    </h1>
-    <p>This Website is for you to share your pics with other users!</p>
-    <p>Comment on the pictures if you like them!!</p>
-    <h2>Upload Image</h2>
-    
-    <form action="upload_file2.php" method="post"
-	enctype="multipart/form-data">
-	<label for="file">Filename:</label>
-	<input type="file" name="file" id="file"><br>
-	<input type="submit" name="submit" value="Submit">
-    </form>
-    
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
+    <!-- end .sidebar1 --></div>
+     <div class="content">
+    <h1>Instructions</h1>
+    <p>Be aware that the CSS for these layouts is heavily commented. If you do most of your work in Design view, have a peek at the code to get tips on working with the CSS for the fixed layouts. You can remove these comments before you launch your site. To learn more about the techniques used in these CSS Layouts, read this article at Adobe's Developer Center - <a href="http://www.adobe.com/go/adc_css_layouts">http://www.adobe.com/go/adc_css_layouts</a>.</p>
+    <h2>Clearing</h2>
+
+<div id="content">
+  <hr />
+
+<div class="section" id="example">
+
+
+	<h2>Image Gallery</h2>
+
+	<div class="imageRow">
+  	<div class="set">
+	
+<?php
+include('config.php');
+$result = mysql_query("SELECT * FROM tbl_ImageList");
+while($row = mysql_fetch_array($result))
+{
+	
+  	 echo '<div class="single"><div class="wrap">
+  		  <a href="'.$row['FS_location'].'" rel="lightbox[plants]" title="'.$row['ImageName'].'"><img src="'.$row['FS_location'].'" alt="Plants: image 1 0f 4 thumb" /></a>
+  		</div></div>';
+}			
+?>		
+		
+		
+		
+  	</div>
+  </div>
+	
+</div>
+
+<hr />
+</div>
+<!-- end #content -->
+
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery-ui-1.8.18.custom.min.js"></script>
+<script src="js/jquery.smooth-scroll.min.js"></script>
+<script src="js/lightbox.js"></script>
+
+<script>
+  jQuery(document).ready(function($) {
+      $('a').smoothScroll({
+        speed: 1000,
+        easing: 'easeInOutCubic'
+      });
+
+      $('.showOlderChanges').on('click', function(e){
+        $('.changelog .old').slideDown('slow');
+        $(this).fadeOut();
+        e.preventDefault();
+      })
+  });
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2196019-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    <h2>Clearing</h2>
     <p>Because all the columns are floated, this layout uses overflow:hidden on the .container. This clearing technique forces the .container to understand where the columns end in order to show any borders or background colors you place on the .container. If you have a large element that protrudes outside the .container, it will appear to be cut off. You also won't be able to use negative margins or absolute positioning with negative values to pull elements outside the .container or they will also won't display outside the .container.</p>
     <p>If you need to use these properties, you'll need to use a different clearing method. The most reliable will be to add a &lt;br class=&quot;clearfloat&quot; /&gt; or &lt;div  class=&quot;clearfloat&quot;&gt;&lt;/div&gt; after your final floated column (but before the .container closes). This will have the same clearing effect.</p>
     <h3>Footer</h3>
@@ -164,5 +212,6 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background
     <p>By nature, the background color on any div will only show for the length of the content. This means if you're using a background color or border to create the look of a side column, it won't extend all the way to the footer but will stop when the content ends. If the .content div will always contain more content, you can place a border on the .content div to divide it from the column.</p>
     <!-- end .content --></div>
   <!-- end .container --></div>
+
 </body>
 </html>

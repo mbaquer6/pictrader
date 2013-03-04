@@ -3,6 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
+<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
 <style type="text/css">
 <!--
 body {
@@ -119,7 +121,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 		<p>&nbsp;</p>
 		<p>&nbsp;</p>
 		<p><a href="Register.php">Register</a><br>
-		  <a href="browse.html">Browse Pictures
+		  <a href="browse.php">Browse Pictures
           </a></p>
     <p>Since this is a one-column layout, the .content is not floated. </p>
     <h3>Logo Replacement</h3>

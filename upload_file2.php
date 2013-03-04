@@ -21,7 +21,8 @@ if ((($_FILES["file"]["type"] == "image/gif")
     else
     {
         $shafilename = sha1_file($_FILES["file"]["tmp_name"])."." . $extension;
-	$path = "../pics/";
+	//$path = "../pics/";
+        $path = "images/";
 	$imagename = $_FILES["file"]["name"];
         echo "Upload: " . $_FILES["file"]["name"] . "<br>";
         echo "Type: " . $_FILES["file"]["type"] . "<br>";
