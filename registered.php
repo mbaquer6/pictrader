@@ -19,9 +19,8 @@ session_start();
                         
                 $user  = $_POST["User"];
                 $pass  = $_POST["Password"]; 
-                include 'connect.php';
-                mysql_select_db('pictrader', $connection);
-                $sql = "select count(User) from Tbl_Users where User = '$user'";
+                include 'config.php';
+                $sql = "select count(User) from tbl_Users where User = '$user'";
                 
                 $initial_query = mysql_query($sql) or die("SQL error");
                 $num_sql = mysql_fetch_array($initial_query);

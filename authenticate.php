@@ -6,10 +6,10 @@ $_SESSION['timeout']=time();
                 $Password = $_REQUEST['Password'];
                 if ($Password != NULL)
                 {
-                    include 'connect.php';
-                    mysql_select_db('pictrader', $connection);
+                    include 'config.php';
                     $_SESSION['myRequest']=8;
-                    $sql = "select Password from Tbl_Users where User = '$user'";
+                    $sql = "select Password from tbl_Users where User = '$user'";
+                    echo "$sql";
                     $initial_query = mysql_query($sql) or die("SQL error");
                     $num_sql = mysql_fetch_array($initial_query);
                     $query = $num_sql[0];
