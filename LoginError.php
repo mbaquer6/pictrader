@@ -92,43 +92,15 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
   <div class="header"><a href="#"><img src="" alt="Insert Logo Here" name="Insert_logo" width="180" height="90" id="Insert_logo" style="background-color: #C6D580; display:block;" /></a> 
     <!-- end .header --></div>
   <div class="content">
-    <h1>Welcome to Pictrader!!</h1>
-    <p>This site is dedicated to all the web users that like to share pictures with people all around the world!</p>
-    <p>Just register to upload your own and share with everyone!!</p>
-    <p>Or just go and browse other user's pics!</p>
-    <p>Enjoy!!!</p>
+    <h1>OOPS!! WRONG USER OR PASSWORD!!!</h1>
+    <p>Please verify your ID and password and try again!!</p>
     <p>&nbsp;</p>
-    <h2>User Login</h2>
-    
-    <body>
-	  <form action="authenticate.php" method="post">
-				<table border="0">
-					<tr>	
-						<th>Username</th>
-						<td><input type ="text" name="User"/></td>
-					</tr>
-					<tr>
-						<th>Password</th>
-						<td><input type="password" name="Password"/> 
-					</tr>
-					<tr>
-						<td colspan="2" align="center"><input type="submit" value="Login"/></td> 
-					</tr>
-				</table>
-		</form>
-		<p>&nbsp;</p>
-		<p>&nbsp;</p>
-		<p><a href="Register.php">Register</a><br>
-		  <a href="browse.html">Browse Pictures
-          </a></p>
-    <p>Since this is a one-column layout, the .content is not floated. </p>
-    <h3>Logo Replacement</h3>
-    <p>An image placeholder was used in this layout in the .header where you'll likely want to place  a logo. It is recommended that you remove the placeholder and replace it with your own linked logo. </p>
-    <p> Be aware that if you use the Property inspector to navigate to your logo image using the SRC field (instead of removing and replacing the placeholder), you should remove the inline background and display properties. These inline styles are only used to make the logo placeholder show up in browsers for demonstration purposes. </p>
-    <p>To remove the inline styles, make sure your CSS Styles panel is set to Current. Select the image, and in the Properties pane of the CSS Styles panel, right click and delete the display and background properties. (Of course, you can always go directly into the code and delete the inline styles from the image or placeholder there.)</p>
+    <p>Not registered?</p>
+    <p><a href="register.php">Register here!!</a></p>
+    <h2>&nbsp;</h2>
   <!-- end .content --></div>
   <div class="footer">
-    <p>All rights reserved. 2013</p>
+    <p>Footer</p>
     <!-- end .footer --></div>
   <!-- end .container --></div>
 </body>

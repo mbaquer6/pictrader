@@ -1,4 +1,0 @@
-pictrader
-=========
-
-pictrader

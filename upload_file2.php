@@ -1,4 +1,10 @@
 <?php
+session_start();
+$user=$_SESSION['User'];
+?>
+<html>
+<head>
+<?php
 $allowedExts = array("jpg", "jpeg", "gif", "png", "JPG","JPEG", "GIF" );
 $extension = end(explode(".", $_FILES["file"]["name"]));
 if ((($_FILES["file"]["type"] == "image/gif")
@@ -27,11 +33,15 @@ if ((($_FILES["file"]["type"] == "image/gif")
             echo $shafilename. " already exists. ";
         }
         else
-        {
+        {      
                 include 'connect.php';
                 mysql_select_db('pictrader',$connection);
+                $sql = "select ID from Tbl_Users where User = '$user'";
+                $initial_query = mysql_query($sql) or die("SQL error");
+                $num_sql = mysql_fetch_array($initial_query);
+                $query = $num_sql[0];
                 $sql = "INSERT INTO tbl_ImageList (ID, UserID, ImageName, Date,FS_location)
-                VALUES (NULL, 2, '".$imagename."',CURRENT_TIMESTAMP,'".$path.$shafilename."');";
+                VALUES (NULL, '".$query."' , '".$imagename."',CURRENT_TIMESTAMP,'".$path.$shafilename."');";
                 mysql_query($sql);
                 mysql_close($connection);
                 move_uploaded_file($_FILES["file"]["tmp_name"], $path .$shafilename);
@@ -42,16 +52,12 @@ if ((($_FILES["file"]["type"] == "image/gif")
 else
 {
     echo "Invalid file";
-}      }
-      
-            else
-            {
-                echo "Problema conexión base de datos.";
-            }
-        }
-    }
 }
-else
-{
-    echo "Invalid file";
-}
+?>
+</head>
+<body>
+    <FORM METHOD="LINK" ACTION="upload.php">
+    <INPUT TYPE="submit" VALUE="OK">
+    </FORM>
+</body>
+</html>

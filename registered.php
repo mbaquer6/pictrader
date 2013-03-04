@@ -1,11 +1,5 @@
-<html>
-<head>
-</head>
-<body>
-    <?php
+<?php
 session_start();
-try
-        {
                 if ((strlen($_POST['User']) === 0) || $_POST['User'] === null)
                         {
                                 throw new Exception("No username given", 12);
@@ -20,31 +14,31 @@ try
                         }
                 if ($_POST['Password'] != $_POST['ConfPass'])
                         {
-                                throw new Exception("Passwords doesn't match", 15);
+                            throw new Exception("Passwords doesn't match", 15);
                         }
-                
-                
+                        
+                $user  = $_POST["User"];
+                $pass  = $_POST["Password"]; 
                 include 'connect.php';
                 mysql_select_db('pictrader', $connection);
+                $sql = "select count(User) from Tbl_Users where User = '$user'";
                 
-                $user  = $_POST["User"];
-                $pass  = $_POST["Password"];
-                $pass2 = $_POST["ConfPass"];
-                
-                if ($pass == $pass2)
-                        {
-                                
-                                $sql = "INSERT INTO tbl_Users (ID, User, Password, Firstname, Lastname) VALUES (NULL,     '" . $user . "', '" . $pass . "', '" . $pass . "', '" . $pass . "');";
-                                mysql_query($sql);
-                        }
-        }
-catch (Exception $e)
-        {
-                $_SESSION['error']  = $e->getMessage();
-                $_SESSION['errorn'] = $e->getCode();
-                header('location: errores.php');
-        }
-?>
+                $initial_query = mysql_query($sql) or die("SQL error");
+                $num_sql = mysql_fetch_array($initial_query);
+                $numrows = $num_sql[0];
+                mysql_free_result($initial_query);
 
-    </body>
-</html>
+                
+                if ($numrows!= 0)
+                {
+                    header('location: alreadyexists.php');
+                }
+                else
+                {
+                    $sql = "INSERT INTO tbl_Users (ID, User, Password, Firstname, Lastname) VALUES (NULL,     '" . $user . "', '" . $pass . "', '" . $pass . "', '" . $pass . "');";
+                    mysql_query($sql);                  
+                    header('location: registrationsuccess.php');
+                    
+                }
+                mysql_close($connection);
+?>

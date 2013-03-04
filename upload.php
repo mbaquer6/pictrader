@@ -1,6 +1,15 @@
+<?php
+session_start();
+$user=$_SESSION['User'];
+if(!isset($_SESSION['User'])) // if there is no valid session
+{
+    header("Location: loginform.html");
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Index</title>
 <style type="text/css">
@@ -117,7 +126,6 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background
 </style></head>
 
 <body>
-
 <div class="container">
   <div class="sidebar1">
     <ul class="nav">
@@ -130,7 +138,11 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background
     <p>If you would like the navigation along the top, simply move the ul.nav to the top of the page and recreate the styling.</p>
   <!-- end .sidebar1 --></div>
   <div class="content">
-    <h1>Welcome!</h1>
+    <h1>Welcome
+    <?php
+    echo "$user"."!!!" ;
+    ?>
+    </h1>
     <p>This Website is for you to share your pics with other users!</p>
     <p>Comment on the pictures if you like them!!</p>
     <h2>Upload Image</h2>
