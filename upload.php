@@ -131,7 +131,7 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background
     <ul class="nav">
       <li><a href="#" target="new">Upload pics</a></li>
       <li><a href="browse.php">Pic browser</a></li>
-      <li><a href="#">Link three</a></li>
+      <li><a href="logout.php">Logout</a></li>
       <li><a href="#">Link four</a></li>
     </ul>
     <p>  Use this as a starting point and modify the properties to produce your own unique look. If you require flyout menus, create your own using a Spry menu, a menu widget from Adobe's Exchange or a variety of other javascript or CSS solutions.</p>

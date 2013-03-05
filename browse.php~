@@ -126,9 +126,9 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background
     <div class="container">
   <div class="sidebar1">
     <ul class="nav">
-      <li><a href="upload.php">Upload Pics</a></li>
-      <li><a href="Login.php">Login</a></li>
-      <li><a href="Register.php">Register</a></li>
+      <li><a href="#">Upload Pics</a></li>
+      <li><a href="#">Login</a></li>
+      <li><a href="#">Register</a></li>
       <li></li>
     </ul>
     <p> The above links demonstrate a basic navigational structure using an unordered list styled with CSS. Use this as a starting point and modify the properties to produce your own unique look. If you require flyout menus, create your own using a Spry menu, a menu widget from Adobe's Exchange or a variety of other javascript or CSS solutions.</p>

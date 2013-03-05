@@ -95,7 +95,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
     <h1>Registration successful!!</h1>
     <p>Please login with your new username and password!!</p>
     <p>&nbsp;</p>
-    <p>Go to <a href="Login.php">Login</a>.</p>
+    <p>Go to <a href="Index.php">Login</a>.</p>
     <h2>&nbsp;</h2>
   <!-- end .content --></div>
   <div class="footer">
